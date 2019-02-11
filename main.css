@@ -56,8 +56,10 @@ body {
 
 h2 {
   font-size: 36px;
-  margin-top: 92px;
-  margin-bottom: 102px;
+  /* margin-top: 92px;
+  margin-bottom: 102px; */
+  margin-top: 10%;
+  margin-bottom: 12%;
   text-align: center;
 }
 
@@ -78,13 +80,15 @@ header {
   grid-column-start: 1;
   grid-column-end: -1;
   background-color: #FD0000;
-  height: 180px;
+  height: 100%;
 }
 
 form {
+  display: block;
   margin-top: 48px;
   margin-bottom: 48px;
-  margin-left: 200px;
+  margin-left: 10%;
+  margin-right: 10%;
   font-size: 36px;
   color: white;
   font-family: 'Roboto', sans-serif;
@@ -135,7 +139,8 @@ main {
 
 .info p {
   font-size: 24px;
-  padding: 108px 0;
+  padding-top: 84px;
+  padding-bottom: 118px;
 }
 
 .red-font-1{
@@ -176,4 +181,21 @@ footer {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   font-size: 18px;
+}
+
+@media only screen and (min-width: 1024px) {
+  /* header */
+  form {
+    margin-left: 200px;
+  }
+  /* main styling */
+  h2 {
+    margin-top: 92px;
+    margin-bottom: 102px;
+  }
+  .info p {
+    font-size: 24px;
+    padding-top: 103px;
+    padding-bottom: 113px;
+  }
 }

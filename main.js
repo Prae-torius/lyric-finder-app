@@ -15,7 +15,7 @@ function watchForm() {
 
     $('#search-results').remove();
     $('#player-container').remove();
-    $('#lyrics-container').remove();
+    $('#lyrics-section').remove();
 
     // responsible for fetching and displaying search results and lyrics
     getVideosFromQuery(querySong, queryArtist);
