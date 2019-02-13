@@ -104,6 +104,10 @@ input::placeholder {
   font-weight: 900;
 }
 
+input:focus::placeholder {
+  color: transparent;
+}
+
 button {
   height: 40px;
   margin-left: 5px;
@@ -158,9 +162,16 @@ main {
   color: white;
 }
 
-.info p {
+.info-text {
   font-size: 24px;
-  padding: 84px 10px 118px 10px;
+}
+
+.info h3 {
+  padding: 40px 0 0 0;
+}
+
+.info p {
+  padding: 34px 50px 118px 50px;
 }
 
 .red-font{
@@ -278,9 +289,13 @@ footer {
     margin-bottom: 102px;
   }
 
+  .info-text {
+    display: inline-block;
+  }
+
   .info p {
-    font-size: 24px;
-    padding: 103px 50px 113px 50px;
+    font-size: 22px;
+    padding: 103px 50px 113px 10px;
   }
 
   .results {
