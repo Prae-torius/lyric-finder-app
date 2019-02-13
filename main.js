@@ -58,10 +58,6 @@ function getVideosFromQuery(querySong, queryArtist){
   })
 }
 
-// function getVideoFromLink(){
-// // with link (jump to 'change current video...')
-// }
-
 function displaySearchResults(responseJson) {
 // display search results
   $('#how-to').after('<section id="search-results" class="results"><h3 class="result-title red-font">Video List</h3><p id="#search-error"></p><ul id="results-list"></ul></section>')
@@ -110,27 +106,6 @@ function displayLyricsError(err) {
   // genereates HTML for showing the user that an error has occured with getting lyrics
   $('main').append(`<section id="lyrics-section" class="results"><h3 class="result-title red-font">Lyrics</h3><p id="lyrics-error">${`<span class="red-font">Unable to get lyrics:</span> ${err.message}<br><br>You most likely didn't enter the correct <span class="red-font">SONG TITLE</span> or <span class="red-font">ARTIST NAME</span>`}</p></section>`)
 }
-
-// function displayHowTo() {
-//   // Displays step-by-step how to use the app
-//   $('header').append('<h2 id="how-to-toggle">How to</h2>');
-// }
-
-// function toggleHowTo() {
-//   $('header').on('click', '#how-to-toggle', event => {
-//     $('#how-to').toggleClass('hidden');
-//     toggleResultsVisibility();
-//   })
-// }
-
-// function toggleResultsVisibility() {
-//   $('#search-results').toggleClass('results');
-//   $('#player-section').toggleClass('results');
-//   $('#lyrics-section').toggleClass('results');
-//   $('#results-list').toggleClass('hidden');
-//   $('#player-section').toggleClass('hidden');
-//   $('#lyrics-section').toggleClass('hidden');
-// }
 
 function scrollToID() {
   $('body').on('click', 'li', event => {
