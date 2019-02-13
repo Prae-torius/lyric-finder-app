@@ -1,4 +1,4 @@
-#Lyric-Viewer
+# Lyric-Viewer
 
 Summary: Search for a song and lyrics by inputting a song title and artist name, listen and follow along with lyrics
 
