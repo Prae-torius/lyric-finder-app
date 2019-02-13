@@ -47,40 +47,29 @@ table {
 	border-spacing: 0;
 }
 
-/* Document Styling */
-body {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 10px;
-}
-
-h2 {
-  font-size: 36px;
-  /* margin-top: 92px;
-  margin-bottom: 102px; */
-  margin-top: 10%;
-  margin-bottom: 12%;
-  text-align: center;
-}
-
-h3 {
-  font-size: 24px;
-  text-align: center;
-  margin-bottom: 40px;
-}
-
-/* Header Styling */
+/* body styling */
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
 }
 
+body {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: 
+  "header"
+  "main"
+  "footer";
+  grid-gap: 10px;
+  color: #363636;
+}
+
+/* header styling */
 header {
-  grid-column-start: 1;
-  grid-column-end: -1;
+  grid-area: header;
   background-color: #FD0000;
-  height: 100%;
 }
 
 form {
@@ -100,50 +89,81 @@ input {
   border: none;
   border-bottom: 2px solid white;
   background: none;
-  font-size: 36px;
   color: white;
-  font-family: 'Roboto', sans-serif;
+  font-size: 36px;
+  font-family: inherit;
   font-weight: 400;
 }
 
 input::placeholder {
   color: white;
+  -moz-color: white;
+  -ms-color: white;
   font-size: 36px;
-  font-family: 'Roboto', sans-serif;
+  font-family: inherit;
   font-weight: 900;
 }
 
+button {
+  height: 40px;
+  margin-left: 5px;
+  border: 2px solid white;
+  background: none;
+  color: white;
+  font-size: 24px;
+  font-family: inherit;
+  font-weight: 900;
+}
 
+button:hover {
+  background: white;
+  color: #FD0000;
+  cursor: pointer;
+}
+
+button:focus {
+  background: white;
+  color: #FD0000;
+  cursor: pointer;
+}
 /* Main Styling */
 
 main {
-  grid-column: span 4;
+  grid-area: main;
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto 1fr;
+  grid-template-areas: 
+  "list"  
+  "video"
+  "lyrics"; 
+  justify-items: center;
 }
 
 #how-to {
-  grid-column: span 4;
+  grid-row: span 3;
 }
 
-.hidden {
-  display: none;
+.info-heading {
+  font-size: 36px;
+  margin-top: 102px;
+  margin-bottom: 112px;
+  text-align: center;
 }
 
 .info {
-  text-align: center;
   height: 240px;
   width: auto;
+  text-align: center;
   color: white;
 }
 
 .info p {
   font-size: 24px;
-  padding-top: 84px;
-  padding-bottom: 118px;
+  padding: 84px 10px 118px 10px;
 }
 
-.red-font-1{
+.red-font{
   color: #FD0000;
 }
 
@@ -160,21 +180,61 @@ main {
 }
  
 .results {
-  margin: 92px 40px 0 40px;
+  margin: 40px 12.5% 0 12.5%;
+}
+
+.result-title {
+  font-size: 24px;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 #results-list > * {
   margin-bottom: 16px;
 }
 
-#results-list li p:hover{
-  cursor: pointer;
+#search-results {
+  grid-area: list;
+}
+
+.list-item {
+  text-decoration: none;
+  color: inherit;
+}
+
+.list-item:hover {
   color: #FD0000;
+}
+
+.list-item:focus {
+  color: #FD0000;
+}
+
+#player-section {
+  grid-area: video;
+}
+
+#player-section p {
+  margin: 20px 0;
+}
+
+#lyrics-section {
+  grid-area: lyrics;
+}
+
+iframe {
+  width: 75vw; 
+  height: 42.1875vw; /* 100/56.25 = 560/315 = 1.778 */
+  background:red;  
+}
+
+.hidden {
+  display: none;
 }
 
 /* Footer Styling */
 footer {
-  grid-column: span 4;
+  grid-area: footer;
   height: 120px;
   margin-top: 78px;
   text-align: center;
@@ -183,19 +243,47 @@ footer {
   font-size: 18px;
 }
 
+@media only screen and (min-width: 640px) {
+  iframe {
+    display: block;
+    width: 480px;
+    height: 270px;
+    margin: 0 auto;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
   /* header */
   form {
     margin-left: 200px;
   }
+
   /* main styling */
-  h2 {
+  main {
+    grid-column: span 1;
+    display: grid;
+    grid-template-columns: 2fr auto 600px 2fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: 
+    ". list video ."  
+    ". list lyrics ."; 
+  }
+
+  #how-to {
+    grid-column: span 4;
+  }
+
+  .info-heading {
     margin-top: 92px;
     margin-bottom: 102px;
   }
+
   .info p {
     font-size: 24px;
-    padding-top: 103px;
-    padding-bottom: 113px;
+    padding: 103px 50px 113px 50px;
+  }
+
+  .results {
+    margin: 40px 60px 0 60px;
   }
 }
