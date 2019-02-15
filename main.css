@@ -48,6 +48,7 @@ table {
 }
 
 /* body styling */
+
 * {
   box-sizing: border-box;
   font-family: 'Roboto', sans-serif;
@@ -67,6 +68,7 @@ body {
 }
 
 /* header styling */
+
 header {
   grid-area: header;
   background-color: #EC0006;
@@ -130,7 +132,8 @@ button:focus {
   color: #EC0006;
   cursor: pointer;
 }
-/* Main Styling */
+
+/* main styling */
 
 main {
   grid-area: main;
@@ -250,7 +253,7 @@ iframe {
   display: none;
 }
 
-/* Footer Styling */
+/* footer styling */
 footer {
   grid-area: footer;
   height: 120px;
@@ -262,6 +265,7 @@ footer {
 }
 
 @media only screen and (min-width: 425px) {
+  /* main styling */
   .info-heading {
     margin: 0 0 102px 0;
   }
@@ -277,7 +281,7 @@ footer {
 }
 
 @media only screen and (min-width: 1024px) {
-  /* header */
+  /* header styling */
   form {
     margin-left: 200px;
   }
