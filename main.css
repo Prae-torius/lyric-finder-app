@@ -69,7 +69,7 @@ body {
 /* header styling */
 header {
   grid-area: header;
-  background-color: #FD0000;
+  background-color: #EC0006;
 }
 
 form {
@@ -79,7 +79,7 @@ form {
   margin-left: 10%;
   margin-right: 10%;
   font-size: 36px;
-  color: white;
+  color: #FFF;
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
 }
@@ -87,18 +87,18 @@ form {
 input {
   max-width: 200px;
   border: none;
-  border-bottom: 2px solid white;
+  border-bottom: 2px solid #FFF;
   background: none;
-  color: white;
+  color: #FFF;
   font-size: 36px;
   font-family: inherit;
   font-weight: 400;
 }
 
 input::placeholder {
-  color: white;
-  -moz-color: white;
-  -ms-color: white;
+  color: #FFF;
+  -moz-color: #FFF;
+  -ms-color: #FFF;
   font-size: 36px;
   font-family: inherit;
   font-weight: 900;
@@ -111,23 +111,23 @@ input:focus::placeholder {
 button {
   height: 40px;
   margin-left: 5px;
-  border: 2px solid white;
+  border: 2px solid #FFF;
   background: none;
-  color: white;
+  color: #FFF;
   font-size: 24px;
   font-family: inherit;
   font-weight: 900;
 }
 
 button:hover {
-  background: white;
-  color: #FD0000;
+  background: #FFF;
+  color: #EC0006;
   cursor: pointer;
 }
 
 button:focus {
-  background: white;
-  color: #FD0000;
+  background: #FFF;
+  color: #EC0006;
   cursor: pointer;
 }
 /* Main Styling */
@@ -136,30 +136,41 @@ main {
   grid-area: main;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr;
+  grid-template-rows: auto auto auto 1fr;
   grid-template-areas: 
+  "heading"
   "list"  
   "video"
   "lyrics"; 
   justify-items: center;
 }
 
-#how-to {
-  grid-row: span 3;
+h1 {
+  grid-area: heading;
+  font-size: 36px;
+  margin: 92px 40px 102px 40px;
+  text-align: center;
 }
 
 .info-heading {
   font-size: 36px;
-  margin-top: 102px;
-  margin-bottom: 112px;
+  margin: 0 40px 102px 40px;
   text-align: center;
+}
+
+h2 {
+  margin-top: 0;
+}
+
+#how-to {
+  grid-row: span 3;
 }
 
 .info {
   height: 240px;
   width: auto;
   text-align: center;
-  color: white;
+  color: #FFF;
 }
 
 .info-text {
@@ -175,15 +186,15 @@ main {
 }
 
 .red-font{
-  color: #FD0000;
+  color: #EC0006;
 }
 
 .red-bg-1 {
-  background: #FD0000;
+  background: #EC0006;
 }
 
 .red-bg-2 {
-  background: #FF2823;
+  background: #FF191F;
 }
 
 .red-bg-3 {
@@ -191,7 +202,7 @@ main {
 }
  
 .results {
-  margin: 40px 12.5% 0 12.5%;
+  margin: 0 12.5% 40px 12.5%;
 }
 
 .result-title {
@@ -217,10 +228,6 @@ main {
   color: #FD0000;
 }
 
-.list-item:focus {
-  color: #FD0000;
-}
-
 #player-section {
   grid-area: video;
 }
@@ -236,7 +243,7 @@ main {
 iframe {
   width: 75vw; 
   height: 42.1875vw; /* 100/56.25 = 560/315 = 1.778 */
-  background:red;  
+  background:#EC0006;  
 }
 
 .hidden {
@@ -252,6 +259,12 @@ footer {
   font-family: 'Roboto', sans-serif;
   font-weight: 900;
   font-size: 18px;
+}
+
+@media only screen and (min-width: 425px) {
+  .info-heading {
+    margin: 0 0 102px 0;
+  }
 }
 
 @media only screen and (min-width: 640px) {
@@ -276,8 +289,15 @@ footer {
     grid-template-columns: 2fr auto 600px 2fr;
     grid-template-rows: auto 1fr;
     grid-template-areas: 
+    ". heading heading ."
     ". list video ."  
     ". list lyrics ."; 
+  }
+
+  h1 {
+    grid-column: span 4;
+    margin-top: 92px;
+    margin-bottom: 102px;
   }
 
   #how-to {
@@ -285,12 +305,15 @@ footer {
   }
 
   .info-heading {
-    margin-top: 92px;
     margin-bottom: 102px;
   }
 
   .info-text {
     display: inline-block;
+  }
+
+  .info h3 {
+    padding-left: 50px;
   }
 
   .info p {
@@ -299,6 +322,6 @@ footer {
   }
 
   .results {
-    margin: 40px 60px 0 60px;
+    margin: 0 60px 40px 60px;
   }
 }

@@ -10,19 +10,22 @@ function watchForm() {
 // user searches for video
   $('form').submit(event => {
     event.preventDefault();
-    const querySong = $('#query-song').val();
-    const queryArtist = $('#query-artist').val();
+    const querySong = $('#js-query-song').val();
+    const queryArtist = $('#js-query-artist').val();
 
-    $('#search-results').remove();
-    $('#player-section').remove();
-    $('#lyrics-section').remove();
-
-    // responsible for fetching and displaying search results and lyrics
+    // responsible for fetching and displaying search results, lyrics and results heading
+    displayResultsHeading();
     getVideosFromQuery(querySong, queryArtist);
     getLyrics(querySong, queryArtist);
+   
     
     // hides the 'How to guide'
-    $('#how-to').addClass('hidden');
+    $('.js-how-to').addClass('hidden');
+
+    // reveals results sections
+    $('.js-search-results').removeClass('hidden');
+    $('.js-player-section').removeClass('hidden');
+    $('.js-lyrics-section').removeClass('hidden')
   })
 }
 
@@ -60,9 +63,9 @@ function getVideosFromQuery(querySong, queryArtist){
 
 function displaySearchResults(responseJson) {
 // display search results
-  $('#how-to').after('<section id="search-results" class="results"><h3 class="result-title red-font">Video List</h3><p id="#search-error"></p><ul id="results-list"></ul></section>')
+  $('.js-results-list').empty();
   for(let i = 0; i < responseJson.items.length; i++){
-    $('#results-list').append(`<li id="${responseJson.items[i].id.videoId}"><a href="#player-section" class="list-item">${responseJson.items[i].snippet.title}</a></li>`);
+    $('.js-results-list').append(`<li id="${responseJson.items[i].id.videoId}"><a href=".player" class="list-item">${responseJson.items[i].snippet.title}</a></li>`);
   }
 }
 
@@ -72,8 +75,8 @@ function displaySelectedResult() {
   $('main').on('click', 'li', event =>{
     event.preventDefault();
     console.log('clicked');
-    $('#player-section').remove();
-    $('#search-results').after(`<section id="player-section" class="results"><h3 class="result-title red-font">Video</h3><iframe width="480" height="270" src="https://www.youtube.com/embed/${$(event.currentTarget).attr('id')}" frameborder="0" encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p>Unfortunately, some songs on Youtube are not be allowed to be played in an embedded player and will be unavailable :(</p><a href="https://www.youtube.com/watch?v=${$(event.currentTarget).attr('id')}" target="_blank">Open video in new tab</a></section>`);
+    $('.js-player-container').html(`<iframe width="480" height="270" src="https://www.youtube.com/embed/${$(event.currentTarget).attr('id')}" frameborder="0" encrypted-media;></iframe><p>Unfortunately, some songs on Youtube are not be allowed to be played in an embedded player and will be unavailable. :(</p><a href="https://www.youtube.com/watch?v=${$(event.currentTarget).attr('id')}" target="_blank">Open video in new tab</a>`);
+    $('.js-player-container').focus();
   })
 }
 
@@ -97,19 +100,21 @@ function getLyrics(querySong, queryArtist) {
 
 function displayLyrics(responseJson) {
   const lyricString = responseJson.lyrics.replace(/\n/ig, '<br>');
-  
-  $('main').append(`<section id="lyrics-section" class="results"><h3 class="result-title red-font">Lyrics</h3><div id="lyrics-container" class="center"><p id="lyrics-error"></p></div></section>`)
-  $('#lyrics-container').html(lyricString);
+  $('.js-lyrics-container').html(lyricString);
 }
 
 function displayLyricsError(err) {
   // genereates HTML for showing the user that an error has occured with getting lyrics
-  $('main').append(`<section id="lyrics-section" class="results"><h3 class="result-title red-font">Lyrics</h3><p id="lyrics-error">${`<span class="red-font">Unable to get lyrics:</span> ${err.message}<br><br>You most likely didn't enter the correct <span class="red-font">SONG TITLE</span> or <span class="red-font">ARTIST NAME</span>`}</p></section>`)
+  $('.js-lyrics-error').html(`${`<span class="red-font">Unable to get lyrics:</span> ${err.message}.<br><br>You most likely did not enter the correct <span class="red-font">SONG TITLE</span> or <span class="red-font">ARTIST NAME</span>.`}`)
+}
+
+function displayResultsHeading() {
+  $('.js-main-header').html('<span class="red-font">Results</span>');
 }
 
 function scrollToID() {
   $('body').on('click', 'li', event => {
-    $("html, body").animate({ scrollTop: $("#player-section").offset().top }, 500);
+    $("html, body").animate({ scrollTop: $(".js-player-section").offset().top }, 500);
   })
 }
 

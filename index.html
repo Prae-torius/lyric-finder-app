@@ -6,34 +6,54 @@
   <title>Lyric-Viewer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,900" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:900" rel="stylesheet">
 </head>
 <body>
 
-  <header role="heading">
-    <form>
-      <fieldset role="search">
+  <header role="banner">
+    <form role="search">
+      <fieldset>
         
         <legend>Search Youtube for</legend>
 
-        <input type="text" name="query-song" id="query-song" placeholder="insert song" required aria-label="Enter Song Title">
+        <input type="text" name="query-song" id="js-query-song" placeholder="insert song" required aria-label="Enter Song Title" title="Song Title">
         
         by
 
-        <input type="text" name="query-artist" id="query-artist" placeholder="insert artist" required aria-label="Enter Artist Name">
+        <input type="text" name="query-artist" id="js-query-artist" placeholder="insert artist" required aria-label="Enter Artist Name" title="Artist">
         <button type="submit">Search</button>
       </fieldset>
     </form>
  </header>
 
   <main role="main">
-    <section id="how-to">
-      <h1 class="info-heading">Welcome, <span class="red-font">Lyric Viewer</span> allows you to listen to a song and read lyrics simultaniously</h2>
+    <h1 class="js-main-header" aria-live="polite">Welcome, <span class="red-font">Lyric Viewer</span> allows you to listen to a song and read lyrics simultaniously</h1>
+    
+    <section id="how-to" class="js-how-to">
       <h2 class="info-heading"><span class="red-font">How to</span> guide</h2>
       <div class="info red-bg-2"><h3 class="info-text">Step 1</h3><p class="info-text">Enter exact song title and artist to recieve a list of videos and a set of lryics</p></div>
-      <div class="info red-bg-1"><h3 class="info-text">Step 2</h3><p class="info-text">Click on a video title that you want to view</p></div>
+      <div class="info red-bg-1"><h3 class="info-text">Step 2</h3><p class="info-text">Click on a video title from the list that you want to view</p></div>
       <div class="info red-bg-3"><h3 class="info-text">Step 3</h3><p class="info-text">Click play on the video and enjoy :)</p></div>
     </section>
+
+    <section id="search-results" class="results js-search-results hidden">
+      <h2 class="result-title red-font">Video List</h2>
+      <ul id="results-list" class="js-results-list"></ul>
+      <p class="js-search-error" aria-live="polite"></p>
+    </section>
+
+    <section id="player-section" class="results js-player-section hidden">
+      <h2 class="result-title red-font">Video</h2>
+      <div class="js-player-container" aria-live="polite" tabindex="-1"></div>
+    </section>
+
+    <section id="lyrics-section" class="results js-lyrics-section hidden">
+      <h2 class="result-title red-font">Lyrics</h2>
+      <div class="js-lyrics-container" aria-live="polite">
+      </div>
+      <p class="js-lyrics-error" aria-live="polite"></p>
+    </section>
+    
   </main>
 
   <footer role="contentinfo">
